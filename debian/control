@@ -1,0 +1,23 @@
+Source: polaric-aprsd
+Section: hamradio
+Priority: optional
+Maintainer: Øyvind Hanssen <ohanssen@acm.org>
+Build-Depends: debhelper (>= 8.0.0), gettext-base, libgettext-commons-java, libjackson2-core-java, libjackson2-databind-java, openjdk-8-jdk, scala (>> 2.11)
+Standards-Version: 3.9.6
+Homepage: http://aprs.no/dokuwiki
+
+Package: polaric-aprsd
+Architecture: all
+Depends: openjdk-8-jre-headless, jsvc, librxtx-java, scala-library (>> 2.11), scala-xml, scala-parser-combinators, gettext-base, libgettext-commons-java, libjackson2-core-java, libjackson2-databind-java, adduser, sudo, ${misc:Depends}
+Recommends: beep
+Description: Polaric Server: APRS daemon part. 
+ The "Polaric Server" which is mainly a web based service to present APRS 
+ tracking information on maps and where the information is updated at real-
+ time. It is originally targeted for use by radio amateurs in voluntary search
+ and rescue service in Norway. It consists of a web application and a server 
+ program (APRS daemon). 
+ .
+ The APRS daemon gathers data from a TNC or APRS-IS or both. It can present 
+ and manipulate the information through a simple HTTP service. The daemon can 
+ also be set up as an igate (internet gateway) and can be installed 
+ independently of the web app. 

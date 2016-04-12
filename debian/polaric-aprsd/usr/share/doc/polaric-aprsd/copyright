@@ -1,0 +1,32 @@
+
+Files: *
+Copyright: 2014 Øyvind hanssen <ohanssen@acm.org>
+License: GPL-2.0
+(see /usr/share/common-licenses/GPL-2)
+
+Files: debian/*
+Copyright: 2014 Øyvind hanssen <ohanssen@acm.org>
+License: GPL-2.0
+(see /usr/share/common-licenses/GPL-2)
+
+
+Files: jcoord-polaric.jar
+Copyright: J. M. Stott 
+License: GPL
+(see http://www.jstott.me.uk/jcoord/)
+Modified by Ø.Hanssen for Polaric aprsd.
+Modified source: jcoord-modified.tar.gz
+
+Files: utf8-with-fallback-polaric.jar
+Copyright: Rasmus Svensson 
+License: LGPL
+(see /usr/share/common-licenses/LGPL-3)
+Modified by Ø.Hanssen for Polaric aprsd
+Modified source: utf8-with-fallback-modified.tar.gz
+
+Files: simple.jar
+Copyright (C) 2001, Niall Gallagher <niallg@users.sf.net>
+Licence: Apache Licence version 2.0.
+(see /usr/share/common-licenses/Apache-2.0)
+
+

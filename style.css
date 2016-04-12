@@ -1,0 +1,81 @@
+
+body {background: #cfd5cc; } 
+th { text-align: left; }
+a {text-decoration: none}
+
+h2 {
+   font-size: 140%; 
+   font-family: arial;
+   margin-left: 5px; 
+   margin-bottom: 10px
+}
+
+div.trblock, label {display: block; overflow: hidden; }
+
+td {
+    padding-left: 0.5em; 
+    padding-right: 0.5em;
+    padding-bottom: 0.2em;
+    padding-top: 0.2em;
+    background: #f0f5ec;
+    min-height: 12px;
+}
+
+label, input, select, textarea { 
+   margin-bottom: 4px; 
+   vertical-align: middle
+}
+
+label.leftlab, label.lleftlab {
+    float: left;
+    width: 14em;
+    text-align: right;
+    padding-right: 7px;
+    color: #353;
+}
+
+label.lleftlab {
+    width: 7em;
+}
+
+label.sleftlab {
+  width: 5.5em;
+}
+
+br { clear: left; }
+fieldset{ 
+    background: #f0f5ec;
+    padding-top: 0.7em;
+    margin-top: 0.7em; margin-bottom: 0.7em; 
+}
+
+select#symChoice option, select.symChoice option {
+  background-repeat: no-repeat;
+  padding-left:  23px;
+  background-size: contain;
+}
+
+span.kartref { color: #700 }
+span.kartref:hover {font-weight: bold}
+
+span.postfield {font-size: smaller; color: #755; margin-left: 5px; }
+span.fielderror {color: #c00}
+span.fieldsuccess {color: #080;}
+
+select {margin-left: 5px; border: 1px inset #666; background: #eee}
+input {height: 1.5em; border: 1px inset #666;  margin-left: 5px; padding: 0px 3px 0px 3px}
+button {background: #cdc; font-size: smaller; margin-left: 5px;}
+
+div.taglist {
+   -moz-columns: auto; 
+   -moz-column-width: 11em; 
+   -moz-column-gap:0.5em;
+   -webkit-columns: auto; 
+   -webkit-column-width: 11em; 
+   -webkit-column-gap:0.5em;
+   columns: auto; 
+   column-width: 11em; 
+   column-gap:0.5em;
+}
+
+div.taglist input {margin: 0.1em}

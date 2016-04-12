@@ -1,0 +1,51 @@
+#!/bin/bash
+set -e
+
+
+case "$1" in
+    remove)
+       # Nothing to do here
+    ;;
+
+    purge)
+       if id polaric > /dev/null 2>&1 ; then
+           deluser --quiet polaric || true
+           delgroup --quiet --only-if-empty polaric || true
+       fi
+       
+       if [ -d "/var/log/polaric" ]; then
+          rm -R /var/log/polaric 
+       fi
+       if [ -d "/var/lib/polaric" ]; then
+          rm -R /var/lib/polaric 
+       fi
+    ;;
+
+    upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+        # Nothing to do here
+    ;;
+
+    *)
+        echo "$0 called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+# Automatically added by dh_installinit
+if [ "$1" = "purge" ] ; then
+	update-rc.d polaric-aprsd remove >/dev/null
+fi
+
+
+# In case this system is running systemd, we make systemd reload the unit files
+# to pick up changes.
+if [ -d /run/systemd/system ] ; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_installdebconf
+if [ "$1" = purge ] && [ -e /usr/share/debconf/confmodule ]; then
+	. /usr/share/debconf/confmodule
+	db_purge
+fi
+# End automatically added section

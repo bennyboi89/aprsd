@@ -1,0 +1,7 @@
+/etc/init.d/polaric-aprsd
+/etc/logrotate.d/polaric-aprsd
+/etc/polaric-aprsd/server.ini
+/etc/polaric-aprsd/symbols
+/etc/polaric-aprsd/trailcolours
+/etc/polaric-aprsd/view.profiles
+/etc/sudoers.d/polaric-aprsd

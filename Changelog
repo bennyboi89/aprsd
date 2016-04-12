@@ -1,0 +1,166 @@
+CHANGES SINCE RELEASE 1.1.
+-------------------------
+
+V.1.1.1
+-------
+
+* Move to simpleframework v.5
+* Fix problems w/scalability of HTTP server to handle service handlers blocking for a time. 
+* Short labels for channels. Add numbering.
+* Some bugfixes, mostly related to icons and signs. . 
+ 
+
+V.1.2
+-----
+
+* Implement and test configuration support. Config plugin. 
+* Auto including of plugin configs when installing? config.d subdirectory.
+* Move to Java 7
+* Move to Scala 1.8+
+* Object expire. Should not expire own objects? Fix. 
+* Plugin manager starts AFTER http server and AFTER StationDB -> 
+  Those do not get parameters from webconfig plugin! Fix. 
+* Create objects: Symbol and symtable are switched. Fix. 
+* SAR mode prefix filter does not work. Fix. 
+* SAR mode: hide alternative icon as well?
+* XML support for a collection of points (without anything else). <pointcloud> tag.   
+* [C] Allow more than one plugin js to add callback for menu.
+* [C] Allow auto-including of plugin css and js
+* [C] Install a password file with user admin, initially. 
+* [C] Fix serious bug: Menu didn't work if plugins didn't add menu-items. 
+* [C] XML support for a displaying a collection of points (without anything else).
+* [C] Statkart name database lookup.
+* [C] Separate out api.js
+    
+    
+V.1.3
+-----
+
+* Set own position didn't work.  Fix      
+* "Skjul ident" ("globale innstillinger") didn't work in all "views". Fix.
+* Allow aliases to be visible for all in SAR modus (option). 
+* [M] Adjust CSS for scale/status box for mobile.
+* [M] Change screen resolution. 
+* [C] Configurable gray-layer over maps. Adjust contrast/opacity?    
+* [C] Iframe API: Make links work in search lists
+* [C] Iframe API: Subscribe to asynchronous updates (events/callbacks)
+* [C] Iframe API: Subscription: Objects in map view.
+* [C] Updates to mapconfig. 
+* [C] Move to OpenLayers 2.13.1       
+* (various small fixes). 
+
+
+V.1.4
+-----
+* Configurable filters for what is to be displayed on map (and how). Set of "modes". 
+  Scripting of view-profiles.
+* Fix a bug in timestamp interpretation the 1st in a month.        
+* AprsHandler. Asynchronous subscribe interface to parser       
+* Allow channels (sources) to be visible for logged in or SAR users only?
+* Some updates to icons. 
+* [C] Filter profiles menu on client: Separate source/class for view profile menu.  
+      Menu choices that are only visible for logged in users?
+* [C] Show restricted contents (channels, filters) to users that are given SAR access. 
+* [C] SAR code entering did not work! Fix for Android app. 
+* [C] Separate out code for authentication/autorisation.               
+* [C] Fix small bug with auto tracking that made item dissappear from map 
+      under certain conditions. 
+* [C] Handle compatibility problems between Apache 2.2 and 2.4
+
+
+V.1.5
+-----
+* Message sequence numbers used in authenticated APRS messages: Increase range, 
+  increase number of stored numbers to better guard against replay-attacks. Store msgids on a separate 
+  file. 
+* Menu selection of symbol when setting own position. 
+* Fix bug in formatting own position (in aprs reports)     
+* Deny HTTP requests coming from outside localhost (security!). 
+* After client reload: Authentication status is not available before XML overlay is updated. Fix. 
+  (load a metadata-only XML document when initializing app). 
+* Restructure channel class framework. Move classes to separate directory. 
+* Implement KISS over TCP channel.
+* Reports from KISS channels weren't displayed. Didn't extract message type. Fix.
+* [C] Modularize context menu. API to install handler functions for various contexts? 
+* [C] Use JS context menu (and icons) for filter-profiles menu and map-area menu. Ability to hide 
+      map-area-views from menu.       
+* (some small fixes).
+
+
+V.1.6
+-----
+* Add scale to view-filter criteria. 
+* UTM zones not hardwired in aprsd anymore. Clients tell in each request. Zone in config 
+  is now just default, still included in XML overlay for compatibility). Eliminate need for setting zone letter
+  since this is redundant. 
+* [C] Some hacking to allow layers with other projections than UTM to be used. Tested with OSM. 
+* [C] Some fixes/adjustments to scale info and distance measurements.
+* [C] Simpler configuration of UTM zones/layers in mapconfig.js.
+* [C] Remove ka-map backend. Remove unecessary code from kaMap.js        
+* [C] Use Mapcache instead of ka-map cache backend (note that mapcache is not supported in older 
+   versions of Debian. Use Jessie or recent versions of Ubuntu/Mint). 
+* (some small fixes)
+         
+         
+V.1.7
+-----
+* Language and translation support (based on GNU gettext). 'lang' URL parameter.
+* Use Lat/Long coordinates (instead of UTM) in requests/responses between client and server. 
+* Regex based mapping from symbols to icons.
+* Symbol/icon updates
+
+* [C] Support mixing layers with different projections. Re-center and re-zoom map when projection changes.
+* [C] Get scalebar right for other projections than UTM.         
+* [C] Add 'gotopos' URL parameter.
+* [C] Minor style updates.
+* [C] Flexible OL Layer setup. dynamic evalutation of what layers to show:      
+   - More flexible setup of layers in mapconfig.js.
+   - Automatic hiding/showing of layers in layer switcher. Preserve ordering of layers. 
+   - JS file to be included before mapconfig.js. Based on gpx.js
+   - Filter support. Polygons/extent filter, scale, projection, selected base layer, etc..
+
+
+V.1.8
+-----
+* Activate/deactivate of channels at run-time. Support re-load without needing to 
+  restart server.
+* Status indication on channels. RUNNING, NOT-RUNNING, FAILED?
+* Allow backup channels which are automatically started when primary 
+  channel fails. 
+* Allow clients to show raw APRS packets. 
+* Move to Java 8. Note: This change means that we depend on Scala version 2.11 or later
+  and extra Scala package for XML handling. 
+* Change class hierarchy to better support other types of position objects than APRS. 
+  Some parts of APRS specific classes moved to generic class.     
+* Framework for Views (MVC pattern) for Point objects. Easily extendable for subclasses. 
+* Support incoming aprs item reports.    
+* Various updates and fixes.. 
+
+* [C] Implement our own layer switcher. 
+* [C] Layer switcher icon on toolbar. 
+* [C] Persistent choices of overlay-layers. 
+* [C] Fixes to toolbar for mobile and iframe mode
+* [C] Fix issues with canvas/scale with IE browser. 
+      Some cleanup wrt browser support. [
+
+      
+V.1.9
+-----
+     
+* Implement architecture for tagging. Automatic tagging, user tagging.          
+* Use tags instead of CSS class in channel-config. 
+* Add tags, autotagging and icons to filterscripting. 
+* Improve search: Use tags (keywords). 
+* Deal with performance/server overload issue. 
+* Allow filter to make items publicly visible even it set to be non-public 
+  in channel setup. 
+* Implement APRS telemetry with basic presentation (numeric values, list)
+* Some small improvements to channel configuration.
+* Use Simple Framework 6.0.1 
+* Some smaller bugfixes.
+* Rename some classes and source files. 
+
+[C] Add some examples for North America and some help in using Google Maps (thanks W6ELA)
+[C] Allow GPX layers to work with different projections. 
+
+ 
