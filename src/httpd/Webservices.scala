@@ -23,11 +23,17 @@ import org.simpleframework.transport.connect.Connection
 import org.simpleframework.transport.connect.SocketConnection
 import org.simpleframework.http._
 import org.xnap.commons.i18n._
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
+import java.util.concurrent.TimeoutException
 
 
 
 package no.polaric.aprsd.http
 {
+
+  import com.sun.corba.se.spi.orbutil.fsm.Action
+  import com.sun.istack.internal.logging.Logger
 
   class Webservices
       ( val api: ServerAPI) extends XmlServices(api) with ServerUtils
@@ -135,6 +141,26 @@ package no.polaric.aprsd.http
                <option value="/r" style="background-image:url(../aprsd/icons/radio.png)"> {I.tr("Radio station")} </option>
          </select>
     }
+
+    /**
+    * Types of missing persons
+    */
+
+    def personChoice(req: Request) = {
+        val I = getI18n(req)
+        <select id="personChoice" class="symChoice"
+         onchange="var x=event.target.value;document.getElementById('osymtab').value=x[0];document.getElementById('osym').value=x[1];">
+        <option value="/c" style="background-image:url(../aprsd/icons/orient.png)"> {I.tr("Post")} </option>
+        <option value="\m" style="background-image:url(../aprsd/icons/sign.png)"> {I.tr("Sign")} </option>
+        <option value="\." style="background-image:url(../aprsd/icons/sym00.png)"> {I.tr("Cross")} </option>
+        <option value="\n" style="background-image:url(../aprsd/icons/sym07.png)"> {I.tr("Triangle")} </option>
+        </select>
+        }
+
+    /**
+    * Database Test
+    */
+
 
 
 
@@ -521,7 +547,7 @@ package no.polaric.aprsd.http
 
         printHtml (res, htmlBody (req, null, htmlForm(req, prefix, fields, IF_AUTH(action))))
     }
-    
+
 
     /**
      * add Rescue mission
@@ -538,13 +564,11 @@ package no.polaric.aprsd.http
              <xml:group>
              {
                label("objid", "lleftlab", I.tr("Mission ID")+":", I.tr("Identifier for mission")) ++
-               textInput("objid", 9, 9, "") ++
-               br ++
-               label("osymtab", "lleftlab", I.tr("Symbol")+":",
-                      I.tr("APRS symbol table and symbol. Fill in or chose from the list at the right side.")) ++
-               textInput("osymtab", 1, 1, "/") ++
-               textInput("osym", 1, 1, "c") ++
-               symChoice(req) ++
+               textInput("objid", 9, 9, "")  ++
+               br++
+               label("osymtab","lleftlab", I.tr("Missing person")+":",
+                      I.tr("APRS missing person table.")) ++
+               personChoice(req) ++
                br ++
                label("descr", "lleftlab", I.tr("Description")+":", "") ++
                textInput("descr", 30, 40, "") ++
@@ -568,11 +592,11 @@ package no.polaric.aprsd.http
          def action(request : Request): NodeSeq =
              if (id == null || !id.matches("[a-zA-Z0-9_].*\\w*")) {
                 <h2> { I.tr("Invalid id {0}",id)} </h2>
-                <p>  { I.tr("please give 'objid' as a parameter. This must start with a letter/number")} </p>;
+                <p>  { I.tr("please give 'missionid' as a parameter. This must start with a letter/number")} </p>;
              }
              else {
-                val osymtab = req.getParameter("osymtab")
-                val osym  = req.getParameter("osym")
+                val osymtab = req.getParameter("/")
+                val osym  = req.getParameter("c")
                 val otxt = req.getParameter("descr")
                 val perm = req.getParameter("perm")
 
@@ -581,8 +605,8 @@ package no.polaric.aprsd.http
                        new AprsHandler.PosData( pos,
                           if (osym==null) 'c' else osym(0) ,
                           if (osymtab==null) '/' else osymtab(0)),
-                       if (otxt==null) "" else otxt,
-                       "true".equals(perm) ))
+                          if (otxt==null) "" else otxt,
+                          "true".equals(perm) ))
 
                    <h2> {I.tr("Mission added")} </h2>
                    <p>ident={"'"+id+"'"}<br/>pos={showUTM(req, pos) }</p>;
