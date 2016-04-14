@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="aprsd-master">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jcoord-polaric.jar!/" />
+      <root url="jar://$PROJECT_DIR$/polaric-aprsd.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jcoord.jar!/" />
+      <root url="jar://$PROJECT_DIR$/simple.jar!/" />
+      <root url="jar://$PROJECT_DIR$/utf8-with-fallback-polaric.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

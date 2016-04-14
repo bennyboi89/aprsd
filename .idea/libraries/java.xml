@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="java">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/debian/polaric-aprsd/usr/share/java/polaric-aprsd.jar!/" />
+      <root url="jar://$PROJECT_DIR$/debian/polaric-aprsd/usr/share/java/jcoord.jar!/" />
+      <root url="jar://$PROJECT_DIR$/debian/polaric-aprsd/usr/share/java/simple.jar!/" />
+      <root url="jar://$PROJECT_DIR$/debian/polaric-aprsd/usr/share/java/utf8-with-fallback-polaric.jar!/" />
+      <root url="jar://$PROJECT_DIR$/debian/polaric-aprsd/usr/share/java/jcoord-polaric.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
